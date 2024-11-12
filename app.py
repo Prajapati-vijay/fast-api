@@ -48,6 +48,7 @@ def get_db():
 @app.get("/students", response_model=List[Student])
 async def read_students(db: Session = Depends(get_db)):
     query = text("SELECT id, name, age, grade, city FROM students")  # Customize with your table name
+    print("Getting data from API")
     try:
         # Execute the raw SQL query
         result = db.execute(query)
