@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, Session
 from pydantic import BaseModel
 from typing import List
 from fastapi import Depends
-
+from fastapi.middleware.cors import CORSMiddleware
 
 # Replace this with your actual connection string
 DATABASE_URL = "mssql+pyodbc://SA:vijay123@host.docker.internal/student?driver=ODBC+Driver+17+for+SQL+Server"
@@ -18,6 +18,14 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # Initialize FastAPI app
 app = FastAPI()
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 # Pydantic model for response
 class Student(BaseModel):
     id: int
