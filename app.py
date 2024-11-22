@@ -6,7 +6,7 @@ from typing import List
 from fastapi.responses import RedirectResponse
 
 # Replace this with your actual connection string
-DATABASE_URL = "mssql+pyodbc://SA:vijay123@host.docker.internal/student?driver=ODBC+Driver+17+for+SQL Server"
+DATABASE_URL = "mssql+pyodbc://SA:Vijay123456@sqlserver/student?driver=ODBC+Driver+17+for+SQL Server"
 
 # Create the SQLAlchemy engine and session
 engine = create_engine(DATABASE_URL, connect_args={"driver": "ODBC Driver 17 for SQL Server"})
